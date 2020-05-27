@@ -4,15 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_background"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/activity_main_iv_logo"
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/main_logo_icon" />
+
     <TextView
+        android:id="@+id/activity_main_tv_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:fontFamily="@font/acme"
+        android:gravity="center_horizontal"
+        android:text="@string/app_name"
+        android:textColor="@color/colorBlack"
+        android:textSize="46sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_main_iv_logo" />
 
+    <EditText
+        android:id="@+id/activity_main_et_search"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="150dp"
+        android:background="@drawable/main_search"
+        android:drawableLeft="@android:drawable/ic_menu_search"
+        android:drawablePadding="5dp"
+        android:drawableTint="@color/colorBlack"
+        android:ems="10"
+        android:gravity="center_vertical"
+        android:hint="@android:string/search_go"
+        android:includeFontPadding="false"
+        android:inputType="textPersonName"
+        android:paddingLeft="5dp"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@android:color/darker_gray"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_main_tv_logo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
