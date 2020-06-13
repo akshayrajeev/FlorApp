@@ -3,9 +3,11 @@ package com.example.florapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -14,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.NetworkError;
-import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -53,16 +54,28 @@ public class MainActivity extends AppCompatActivity {
 
         animate();
 
+        SharedPreferences preferences = getSharedPreferences("settings", MODE_PRIVATE);
+        String plantingDensityIn = preferences.getString("plantingDensity", "None");
+        String precipitationIn = preferences.getString("precipitation", "None");
+        if(plantingDensityIn.equals("None") && precipitationIn.equals("None")) {
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("plantingDensity", "acre");
+            editor.putString("precipitation", "cm");
+            editor.apply();
+        }
+
         et_search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if(actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                     String query = et_search.getText().toString();
                     if(query.isEmpty()) {
                         Toast.makeText(getApplicationContext(), "No Input", Toast.LENGTH_LONG).show();
                     }
                     else {
-                        callAPI(query);
+                        inputMethodManager.hideSoftInputFromWindow(et_search.getWindowToken(), 0);
+                        getLinks(query);
                     }
                     return true;
                 }
@@ -81,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         sw_complete.animate().alpha(1).setDuration(2000);
     }
 
-    private void callAPI(String query) {
+    private void getLinks(String query) {
         String URL = "";
         if(rb_scientific.isChecked()) {
             URL = "https://trefle.io/api/plants?token=MU1JQ1Nhbnl0VXVNQmhEaUV4VHNMdz09&scientific_name=" + query;
@@ -110,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                 if(error instanceof TimeoutError) {
                     error_message = "Connection Timeout";
                 }
-                else if(error instanceof NetworkError || error instanceof NoConnectionError) {
+                else if(error instanceof NetworkError) {
                     error_message = "Cannot connect to Internet";
                 }
                 Toast.makeText(getApplicationContext(), error_message, Toast.LENGTH_LONG).show();
@@ -127,8 +140,13 @@ public class MainActivity extends AppCompatActivity {
                 Flora flora = new Flora();
                 flora.setId(temp.getInt("id"));
                 flora.setCompleteData(temp.getBoolean("complete_data"));
-                flora.setLink(temp.getString("link"));
-                flora.setCommonName(temp.getString("common_name"));
+                String temp_var = temp.getString("link");
+                if(!temp_var.contains("https") && temp_var.contains("http")) {
+                    temp_var = temp_var.replace("http", "https");
+                }
+                flora.setLink(temp_var);
+                temp_var = temp.getString("common_name");
+                flora.setCommonName(temp_var.substring(0, 1).toUpperCase() + temp_var.substring(1));
                 flora.setScientificName(temp.getString("scientific_name"));
                 list.add(flora);
             } catch(JSONException e) {
