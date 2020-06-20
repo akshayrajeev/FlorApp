@@ -23,9 +23,12 @@ public class SettingsActivity extends AppCompatActivity {
         RadioButton rb_sqm = findViewById(R.id.activity_setting_rb_sqm);
         RadioButton rb_inch = findViewById(R.id.activity_setting_rb_inch);
         RadioButton rb_cm = findViewById(R.id.activity_setting_rb_cm);
+        RadioButton rb_matureHeightCm = findViewById(R.id.activity_setting_rb_matureHeightCm);
+        RadioButton rb_matureHeightFt = findViewById(R.id.activity_setting_rb_matureHeightFt);
         preferences = getSharedPreferences("settings", MODE_PRIVATE);
         String plantingDensityIn = preferences.getString("plantingDensity", "None");
         String precipitationIn = preferences.getString("precipitation", "None");
+        String matureHeightIn = preferences.getString("matureHeight", "None");
 
         if(plantingDensityIn.equals("acre")) {
             rb_acre.setChecked(true);
@@ -39,6 +42,13 @@ public class SettingsActivity extends AppCompatActivity {
         }
         else if(precipitationIn.equals("cm")) {
             rb_cm.setChecked(true);
+        }
+
+        if(matureHeightIn.equals("cm")) {
+            rb_matureHeightCm.setChecked(true);
+        }
+        else if(matureHeightIn.equals("ft")) {
+            rb_matureHeightFt.setChecked(true);
         }
     }
 
@@ -56,6 +66,12 @@ public class SettingsActivity extends AppCompatActivity {
                 break;
             case R.id.activity_setting_rb_cm:
                 editor.putString("precipitation","cm");
+                break;
+            case R.id.activity_setting_rb_matureHeightCm:
+                editor.putString("matureHeight","cm");
+                break;
+            case R.id.activity_setting_rb_matureHeightFt:
+                editor.putString("matureHeight","ft");
                 break;
         }
         editor.apply();

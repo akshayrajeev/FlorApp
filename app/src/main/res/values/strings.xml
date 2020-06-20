@@ -2,4 +2,45 @@
     <string name="app_name">FlorApp</string>
     <string name="settings">Settings</string>
     <string name="exit">Exit</string>
+
+    <string name="show_incomplete_data">Show Incomplete Data</string>
+    <string name="app_logo_image">App Image Logo</string>
+
+    <string name="basic_info">Basic Information</string>
+    <string name="common_name">Common Name</string>
+    <string name="scientific_name">Scientific Name</string>
+    <string name="common_family_name">Common Family Name</string>
+    <string name="scientific_family_name">Scientific Family Name</string>
+
+    <string name="foliage_info">Foliage Information</string>
+    <string name="color">Color</string>
+    <string name="texture">Texture</string>
+    <string name="summer_porosity">Summer Porosity</string>
+    <string name="winter_porosity">Winter Porosity</string>
+
+    <string name="seed_fruit_info">Seed/Fruit Information</string>
+    <string name="seed_period_begin">Seed Period Begin</string>
+    <string name="seed_period_end">Seed Period End</string>
+    <string name="seed_bloom_period">Seed Bloom Period</string>
+    <string name="commercial_availability">Commercial Availability</string>
+    <string name="seedling_vigor">Seedling Vigor</string>
+    <string name="seeds_per_pound">Seeds Per Pound</string>
+
+    <string name="growth_info">Growth Information</string>
+    <string name="caco3_tolerance">CaCO3 Tolerance</string>
+    <string name="drought_tolerance">Drought Tolerance</string>
+    <string name="fire_tolerance">Fire Tolerance</string>
+    <string name="min_ph">Minimum Ph</string>
+    <string name="max_ph">Maximum Ph</string>
+    <string name="min_planting_density">Minimum Planting Density</string>
+    <string name="max_planting_density">Maximum Planting Density</string>
+    <string name="min_precipitation">Minimum Precipitation</string>
+    <string name="max_precipitation">Maximum Precipitation</string>
+    <string name="fertility_requirement">Fertility Requirement</string>
+    <string name="moisture_use">Moisture Use</string>
+    <string name="mature_height">Mature Height</string>
+
+    <string name="show_planting_density_in">Show Planting Density in:</string>
+    <string name="show_precipitation_in">Show Precipitation in:</string>
+    <string name="show_mature_height_in">Show Mature Height in:</string>
 </resources>

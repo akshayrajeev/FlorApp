@@ -22,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -39,8 +40,7 @@ public class FloraActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        flora = (Flora) bundle.getSerializable("Data");
+        flora = intent.getParcelableExtra("Data");
         getData(flora.getLink());
     }
 
@@ -72,17 +72,21 @@ public class FloraActivity extends AppCompatActivity {
         try{
             JSONObject mainSpecies = jsonObject.getJSONObject("main_species");
 
+            JSONObject family = jsonObject.getJSONObject("family");
+            JSONArray images = jsonObject.getJSONArray("images");
             JSONObject foliage = mainSpecies.getJSONObject("foliage");
             JSONObject seedFruit = mainSpecies.getJSONObject("fruit_or_seed");
             JSONObject growth = mainSpecies.getJSONObject("growth");
             JSONObject seed = mainSpecies.getJSONObject("seed");
+            JSONObject specification = mainSpecies.getJSONObject("specifications");
 
-            flora.setFamilyCommonName(jsonObject.getString("family_common_name"));
-            flora.setFamilyScientificName(jsonObject.getJSONObject("family").getString("name"));
+            flora.setFamilyCommonName(family.getString("common_name"));
+            flora.setFamilyScientificName(family.getString("name"));
             flora.setFlowerColour(mainSpecies.getJSONObject("flower").getString("color"));
             flora.setFoliage(foliage.getString("color"), foliage.getString("porosity_summer"), foliage.getString("porosity_winter"), foliage.getString("texture"));
             flora.setSeedFruit(seedFruit.getString("color"), seedFruit.getString("seed_period_begin"), seedFruit.getString("seed_period_end"), seed.getString("bloom_period"), seed.getString("commercial_availability"), seed.getString("seedling_vigor"), seed.optDouble("seeds_per_pound",0));
-            flora.setGrowth(growth.getString("caco_3_tolerance"), growth.getString("drought_tolerance"), growth.getString("fire_tolerance"), growth.getString("ph_maximum"), growth.getString("ph_minimum"), growth.getJSONObject("planting_density_maximum"), growth.getJSONObject("planting_density_minimum"), growth.getJSONObject("precipitation_maximum"), growth.getJSONObject("precipitation_minimum"), growth.getString("fertility_requirement"), growth.getString("moisture_use"));
+            flora.setGrowth(growth.getString("caco_3_tolerance"), growth.getString("drought_tolerance"), growth.getString("fire_tolerance"), growth.getString("ph_maximum"), growth.getString("ph_minimum"), growth.getJSONObject("planting_density_maximum"), growth.getJSONObject("planting_density_minimum"), growth.getJSONObject("precipitation_maximum"), growth.getJSONObject("precipitation_minimum"), growth.getString("fertility_requirement"), growth.getString("moisture_use"), specification.getJSONObject("mature_height"));
+            flora.setImages(images);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -167,9 +171,11 @@ public class FloraActivity extends AppCompatActivity {
         TextView tv_maxPlantingDensity = findViewById(R.id.activity_flora_tv_maxPlantingDensity);
         TextView tv_minPrecipitation = findViewById(R.id.activity_flora_tv_minPrecipitation);
         TextView tv_maxPrecipitation = findViewById(R.id.activity_flora_tv_maxPrecipitation);
+        TextView tv_matureHeight = findViewById(R.id.activity_flora_tv_matureHeight);
         SharedPreferences preferences = getSharedPreferences("settings", MODE_PRIVATE);
         String plantingDensityIn = preferences.getString("plantingDensity", "None");
         String precipitationIn = preferences.getString("precipitation", "None");
+        String matureHeightIn = preferences.getString("matureHeight", "None");
         SpannableString spannableString;
 
         if(plantingDensityIn.equals("acre")) {
@@ -183,8 +189,12 @@ public class FloraActivity extends AppCompatActivity {
             tv_maxPlantingDensity.setText(growth.get("maxPlantingDensitySqm"));
         }
         spannableString.setSpan(new AbsoluteSizeSpan(13, true), 1, spannableString.length(), 0);
-        tv_maxPlantingDensity.append(spannableString);
-        tv_minPlantingDensity.append(spannableString);
+        if(!tv_maxPlantingDensity.getText().equals("No Data")) {
+            tv_maxPlantingDensity.append(spannableString);
+        }
+        if(!tv_minPlantingDensity.getText().equals("No Data")) {
+            tv_minPlantingDensity.append(spannableString);
+        }
 
         if(precipitationIn.equals("cm")) {
             spannableString = new SpannableString(" cm");
@@ -197,8 +207,25 @@ public class FloraActivity extends AppCompatActivity {
             tv_maxPrecipitation.setText(growth.get("maxPrecipitationInch"));
         }
         spannableString.setSpan(new AbsoluteSizeSpan(13, true), 1, spannableString.length(), 0);
-        tv_minPrecipitation.append(spannableString);
-        tv_maxPrecipitation.append(spannableString);
+        if(!tv_minPrecipitation.getText().equals("No Data")) {
+            tv_minPrecipitation.append(spannableString);
+        }
+        if(!tv_maxPrecipitation.getText().equals("No Data")) {
+            tv_maxPrecipitation.append(spannableString);
+        }
+
+        if(matureHeightIn.equals("cm")) {
+            spannableString = new SpannableString(" cm");
+            tv_matureHeight.setText(growth.get("matureHeightCm"));
+        }
+        else {
+            spannableString = new SpannableString(" ft");
+            tv_matureHeight.setText(growth.get("matureHeightFt"));
+        }
+        spannableString.setSpan(new AbsoluteSizeSpan(13, true), 1, spannableString.length(), 0);
+        if(!tv_matureHeight.getText().equals("No Data")) {
+            tv_matureHeight.append(spannableString);
+        }
     }
 
     @Override

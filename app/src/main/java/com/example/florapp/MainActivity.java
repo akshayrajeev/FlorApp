@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -15,6 +16,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -29,7 +31,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -57,10 +58,12 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("settings", MODE_PRIVATE);
         String plantingDensityIn = preferences.getString("plantingDensity", "None");
         String precipitationIn = preferences.getString("precipitation", "None");
-        if(plantingDensityIn.equals("None") && precipitationIn.equals("None")) {
+        String matureHeightIn = preferences.getString("matureHeight", "None");
+        if(plantingDensityIn.equals("None") && precipitationIn.equals("None") && matureHeightIn.equals("None")) {
             SharedPreferences.Editor editor = preferences.edit();
             editor.putString("plantingDensity", "acre");
             editor.putString("precipitation", "cm");
+            editor.putString("matureHeight", "cm");
             editor.apply();
         }
 
@@ -105,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
         if(!sw_complete.isChecked()) {
             URL += "&complete_data=true";
         }
+        Log.i("URL", URL);
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, URL, null, new Response.Listener<JSONArray>() {
             @Override
@@ -129,11 +133,12 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), error_message, Toast.LENGTH_LONG).show();
             }
         });
+        jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(jsonArrayRequest);
     }
 
     private void parseLinks(JSONArray response) {
-        List<Flora> list = new ArrayList<>();
+        ArrayList<Flora> list = new ArrayList<>();
         for(int i=0; i<response.length(); i++) {
             try {
                 JSONObject temp = response.getJSONObject(i);
@@ -145,21 +150,36 @@ public class MainActivity extends AppCompatActivity {
                     temp_var = temp_var.replace("http", "https");
                 }
                 flora.setLink(temp_var);
-                temp_var = temp.getString("common_name");
-                flora.setCommonName(temp_var.substring(0, 1).toUpperCase() + temp_var.substring(1));
-                flora.setScientificName(temp.getString("scientific_name"));
+                String commonName = temp.getString("common_name");
+                if(commonName.equals("null")) {
+                    flora.setCommonName("No Data");
+                }
+                else {
+                    flora.setCommonName(commonName.substring(0, 1).toUpperCase() + commonName.substring(1));
+                    flora.setCommonName(commonName);
+                }
+                String scientificName = temp.getString("scientific_name");
+                if(scientificName.equals("null")) {
+                    flora.setScientificName("No Data");
+                }
+                else {
+                    flora.setScientificName(scientificName);
+                }
                 list.add(flora);
             } catch(JSONException e) {
                 e.printStackTrace();
             }
         }
 
-        Bundle bundle = new Bundle();
         Intent intent;
         if(list.size() == 1) {
             intent = new Intent(getApplicationContext(), FloraActivity.class);
-            bundle.putSerializable("Data", list.get(0));
-            intent.putExtras(bundle);
+            intent.putExtra("Data",list.get(0));
+            startActivity(intent);
+        }
+        else if(list.size() > 1){
+            intent = new Intent(getApplicationContext(), ResultActivity.class);
+            intent.putParcelableArrayListExtra("Data", list);
             startActivity(intent);
         }
     }

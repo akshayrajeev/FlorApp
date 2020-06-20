@@ -1,12 +1,17 @@
 package com.example.florapp;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Serializable;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Flora implements Serializable {
+public class Flora implements Parcelable {
     private int id;
     private boolean completeData;
     private String commonName;
@@ -18,7 +23,11 @@ public class Flora implements Serializable {
     private HashMap<String,String> seedFruit;
     private HashMap<String,String> foliage;
     private HashMap<String,String> growth;
+    private ArrayList<String> images;
     private DecimalFormat decimalFormat = new DecimalFormat("#.###");
+
+    protected Flora() {
+    }
 
     void setId(int id) {
         this.id = id;
@@ -71,7 +80,7 @@ public class Flora implements Serializable {
         seedFruit.put("seedsPerPound", dataHandler(seedsPerPound));
     }
 
-    void setGrowth(String caco3Tolerance, String droughtTolerance, String fireTolerance, String maxPh, String minPh, JSONObject maxPlantingDensityObject, JSONObject minPlantingDensityObject, JSONObject maxPrecipitationObject, JSONObject minPrecipitationObject, String fertilityRequirement, String moistureUse) {
+    void setGrowth(String caco3Tolerance, String droughtTolerance, String fireTolerance, String maxPh, String minPh, JSONObject maxPlantingDensityObject, JSONObject minPlantingDensityObject, JSONObject maxPrecipitationObject, JSONObject minPrecipitationObject, String fertilityRequirement, String moistureUse, JSONObject matureHeight) {
         growth = new HashMap<>();
         growth.put("caco3Tolerance", dataHandler(caco3Tolerance));
         growth.put("droughtTolerance", dataHandler(droughtTolerance));
@@ -88,6 +97,20 @@ public class Flora implements Serializable {
         growth.put("minPrecipitationInch", dataHandler(minPrecipitationObject.optDouble("inches",0)));
         growth.put("fertilityRequirement", dataHandler(fertilityRequirement));
         growth.put("moistureUse", dataHandler(moistureUse));
+        growth.put("matureHeightCm", dataHandler(matureHeight.optDouble("cm",0)));
+        growth.put("matureHeightFt", dataHandler(matureHeight.optDouble("ft",0)));
+    }
+
+    void setImages(JSONArray images) {
+        this.images = new ArrayList<>();
+        for(int i=0; i<images.length(); i++) {
+            try {
+                JSONObject jsonObject = images.getJSONObject(i);
+                this.images.add(jsonObject.getString("url"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     String getLink() {
@@ -126,6 +149,10 @@ public class Flora implements Serializable {
         return growth;
     }
 
+    ArrayList<String> getImages() {
+        return images;
+    }
+
     private String dataHandler(String data) {
         if(data.equals("") || data.equals("null")) {
             return "No Data";
@@ -139,4 +166,38 @@ public class Flora implements Serializable {
         }
         return decimalFormat.format(data);
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeByte((byte) (completeData ? 1 : 0));
+        dest.writeString(commonName);
+        dest.writeString(scientificName);
+        dest.writeString(link);
+    }
+
+    protected Flora(Parcel in) {
+        id = in.readInt();
+        completeData = in.readByte() != 0;
+        commonName = in.readString();
+        scientificName = in.readString();
+        link = in.readString();
+    }
+
+    public static final Creator<Flora> CREATOR = new Creator<Flora>() {
+        @Override
+        public Flora createFromParcel(Parcel in) {
+            return new Flora(in);
+        }
+
+        @Override
+        public Flora[] newArray(int size) {
+            return new Flora[size];
+        }
+    };
 }
