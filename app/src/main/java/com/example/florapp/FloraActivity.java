@@ -2,14 +2,18 @@ package com.example.florapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.text.SpannableString;
 import android.text.style.AbsoluteSizeSpan;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +42,10 @@ public class FloraActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flora);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ImageView iv_warning = findViewById(R.id.activity_flora_iv_warning);
+        TextView tv_warning = findViewById(R.id.activity_flora_tv_warning);
+        iv_warning.setVisibility(View.INVISIBLE);
+        tv_warning.setVisibility(View.INVISIBLE);
 
         Intent intent = getIntent();
         flora = intent.getParcelableExtra("Data");
@@ -94,6 +102,7 @@ public class FloraActivity extends AppCompatActivity {
     }
 
     private void displayData() {
+        ViewPager vp_previewPager = findViewById(R.id.activity_flora_vp_preview);
         TextView tv_common = findViewById(R.id.activity_flora_tv_common);
         TextView tv_scientific = findViewById(R.id.activity_flora_tv_scientific);
         TextView tv_familyCommon = findViewById(R.id.activity_flora_tv_familyCommon);
@@ -116,6 +125,17 @@ public class FloraActivity extends AppCompatActivity {
         TextView tv_maxPh = findViewById(R.id.activity_flora_tv_maxPh);
         TextView tv_fertilityRequirement = findViewById(R.id.activity_flora_tv_fertilityRequirement);
         TextView tv_moistureUse = findViewById(R.id.activity_flora_tv_moistureUse);
+
+        if(flora.getImages().size() > 0) {
+            ImageAdapter imageAdapter = new ImageAdapter(flora.getImages());
+            vp_previewPager.setAdapter(imageAdapter);
+        }
+        else {
+            ImageView iv_warning = findViewById(R.id.activity_flora_iv_warning);
+            TextView tv_warning = findViewById(R.id.activity_flora_tv_warning);
+            iv_warning.setVisibility(View.VISIBLE);
+            tv_warning.setVisibility(View.VISIBLE);
+        }
 
         HashMap<String,String> foliage = flora.getFoliage();
         HashMap<String,String> seedFruit = flora.getSeedFruit();

@@ -43,4 +43,6 @@
     <string name="show_planting_density_in">Show Planting Density in:</string>
     <string name="show_precipitation_in">Show Precipitation in:</string>
     <string name="show_mature_height_in">Show Mature Height in:</string>
+
+    <string name="no_image">No Images Available</string>
 </resources>

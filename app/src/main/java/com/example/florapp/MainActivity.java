@@ -156,7 +156,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else {
                     flora.setCommonName(commonName.substring(0, 1).toUpperCase() + commonName.substring(1));
-                    flora.setCommonName(commonName);
                 }
                 String scientificName = temp.getString("scientific_name");
                 if(scientificName.equals("null")) {
