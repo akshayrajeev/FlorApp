@@ -11,7 +11,7 @@
         android:id="@+id/activity_main_iv_logo"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:alpha="0"
+        android:alpha="1"
         android:contentDescription="@string/app_logo_image"
         app:layout_constraintBottom_toTopOf="@+id/activity_main_tv_logo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +26,7 @@
         android:id="@+id/activity_main_tv_logo"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:alpha="0"
+        android:alpha="1"
         android:fontFamily="@font/acme"
         android:gravity="center_horizontal"
         android:text="@string/app_name"
@@ -53,22 +53,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:alpha="0"
+            android:alpha="1"
             android:buttonTint="@color/colorBlack"
             android:text="@string/common_name"
             android:textColor="@color/colorBlack"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <RadioButton
             android:id="@+id/activity_main_rb_scientific"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:alpha="0"
+            android:alpha="1"
             android:buttonTint="@color/colorBlack"
             android:text="@string/scientific_name"
             android:textColor="@color/colorBlack"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
     </RadioGroup>
 
@@ -76,7 +76,7 @@
         android:id="@+id/activity_main_tv_complete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:alpha="0"
+        android:alpha="1"
         android:text="@string/show_incomplete_data"
         android:textColor="@color/colorBlack"
         android:textSize="16sp"
@@ -90,7 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:alpha="0"
+        android:alpha="1"
         android:theme="@style/SwitchTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,7 +103,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
-        android:alpha="0"
+        android:alpha="1"
         android:background="@drawable/main_search"
         android:drawableStart="@android:drawable/ic_menu_search"
         android:drawablePadding="5dp"
@@ -148,13 +148,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="20dp"
-        app:layout_constraintGuide_percent=".55" />
+        app:layout_constraintGuide_percent=".5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".75" />
+        app:layout_constraintGuide_percent=".7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

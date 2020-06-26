@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size_value">18sp</dimen>
+    <dimen name="text_size_heading">20sp</dimen>
+    <dimen name="text_width">250dp</dimen>
+    <dimen name="margin">15dp</dimen>
+    <dimen name="text_width_result">200dp</dimen>
+    <dimen name="image_height">400dp</dimen>
+    <dimen name="caution_margin">200dp</dimen>
+    <dimen name="settings_margin">25dp</dimen>
+</resources>

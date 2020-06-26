@@ -11,7 +11,7 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="@dimen/settings_margin"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         app:cardBackgroundColor="@color/colorCardViewGreen"
@@ -23,8 +23,9 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/main_search">
 
             <TextView
                 android:id="@+id/tv_plantingDensityIn"
@@ -34,7 +35,7 @@
                 android:layout_marginTop="15dp"
                 android:text="@string/show_planting_density_in"
                 android:textColor="@color/colorBlack"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_heading"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -53,8 +54,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="onRadioButtonClicked"
-                    android:text="acre"
-                    android:textSize="16sp" />
+                    android:text="@string/acre"
+                    android:textSize="@dimen/text_size_value" />
 
                 <Space
                     android:layout_width="20dp"
@@ -66,8 +67,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="onRadioButtonClicked"
-                    android:text="sqm"
-                    android:textSize="16sp" />
+                    android:text="@string/sqm"
+                    android:textSize="@dimen/text_size_value" />
             </RadioGroup>
 
             <TextView
@@ -78,7 +79,7 @@
                 android:layout_marginTop="15dp"
                 android:text="@string/show_precipitation_in"
                 android:textColor="@color/colorBlack"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_heading"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rg_plantingDensityIn" />
@@ -97,8 +98,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="onRadioButtonClicked"
-                    android:text="cm"
-                    android:textSize="16sp" />
+                    android:text="@string/cm"
+                    android:textSize="@dimen/text_size_value" />
 
                 <Space
                     android:layout_width="20dp"
@@ -110,8 +111,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="onRadioButtonClicked"
-                    android:text="inch"
-                    android:textSize="16sp" />
+                    android:text="@string/inch"
+                    android:textSize="@dimen/text_size_value" />
             </RadioGroup>
 
             <TextView
@@ -122,7 +123,7 @@
                 android:layout_marginTop="15dp"
                 android:text="@string/show_mature_height_in"
                 android:textColor="@color/colorBlack"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_heading"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rg_precipitationIn" />
@@ -141,8 +142,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="onRadioButtonClicked"
-                    android:text="cm"
-                    android:textSize="16sp" />
+                    android:text="@string/cm"
+                    android:textSize="@dimen/text_size_value" />
 
                 <Space
                     android:layout_width="20dp"
@@ -153,9 +154,10 @@
                     android:id="@+id/activity_setting_rb_matureHeightFt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:onClick="onRadioButtonClicked"
-                    android:text="ft"
-                    android:textSize="16sp" />
+                    android:text="@string/ft"
+                    android:textSize="@dimen/text_size_value" />
             </RadioGroup>
         </androidx.constraintlayout.widget.ConstraintLayout>
 

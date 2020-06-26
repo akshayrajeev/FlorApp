@@ -9,15 +9,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:padding="10dp"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginEnd="@dimen/margin"
+            android:padding="@dimen/margin"
             app:cardBackgroundColor="@color/colorCardViewGreen"
             app:cardCornerRadius="10dp"
             app:cardElevation="5dp"
@@ -29,7 +29,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
+                android:padding="@dimen/margin">
 
                 <TextView
                     android:id="@+id/basic_info"
@@ -37,21 +37,21 @@
                     android:layout_height="wrap_content"
                     android:text="@string/basic_info"
                     android:textColor="@color/colorRose"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/text_size_heading"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/common_name"
-                    android:layout_width="200dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:layout_weight="0"
                     android:text="@string/common_name"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/basic_info" />
@@ -62,20 +62,20 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/common_name"
                     app:layout_constraintTop_toBottomOf="@id/basic_info" />
 
                 <TextView
                     android:id="@+id/scientific_name"
-                    android:layout_width="200dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/scientific_name"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_common" />
@@ -85,20 +85,20 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/scientific_name"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_common" />
 
                 <TextView
                     android:id="@+id/common_family_name"
-                    android:layout_width="200dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/common_family_name"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_scientific" />
@@ -108,20 +108,20 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/common_family_name"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_scientific" />
 
                 <TextView
                     android:id="@+id/scientific_family_name"
-                    android:layout_width="200dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/scientific_family_name"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_familyCommon" />
@@ -131,7 +131,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/scientific_family_name"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_familyCommon" />
@@ -144,7 +144,9 @@
             android:id="@+id/cardView2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/margin"
             app:cardBackgroundColor="@color/colorCardViewGreen"
             app:cardCornerRadius="10dp"
             app:cardElevation="5dp"
@@ -156,7 +158,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
+                android:padding="@dimen/margin">
 
                 <TextView
                     android:id="@+id/foliage_info"
@@ -165,97 +167,101 @@
                     android:gravity="center"
                     android:text="@string/foliage_info"
                     android:textColor="@color/colorRose"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/text_size_heading"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/foliage_color"
-                    android:layout_width="200dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/color"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/foliage_info" />
 
                 <TextView
                     android:id="@+id/activity_flora_tv_foliageColor"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toRightOf="@id/foliage_color"
+                    android:textSize="@dimen/text_size_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/foliage_color"
                     app:layout_constraintTop_toBottomOf="@id/foliage_info" />
 
                 <TextView
                     android:id="@+id/foliage_summer"
-                    android:layout_width="200dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/summer_porosity"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/foliage_color" />
+                    app:layout_constraintTop_toBottomOf="@+id/activity_flora_tv_foliageColor" />
 
                 <TextView
                     android:id="@+id/activity_flora_tv_foliageSummer"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toRightOf="@id/foliage_summer"
+                    android:textSize="@dimen/text_size_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/foliage_summer"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_foliageColor" />
 
                 <TextView
                     android:id="@+id/foliage_winter"
-                    android:layout_width="200dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/winter_porosity"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/foliage_summer" />
+                    app:layout_constraintTop_toBottomOf="@+id/activity_flora_tv_foliageSummer" />
 
                 <TextView
                     android:id="@+id/activity_flora_tv_foliageWinter"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toRightOf="@id/foliage_winter"
+                    android:textSize="@dimen/text_size_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/foliage_winter"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_foliageSummer" />
 
                 <TextView
                     android:id="@+id/foliage_texture"
-                    android:layout_width="200dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/texture"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/foliage_winter" />
+                    app:layout_constraintTop_toBottomOf="@+id/activity_flora_tv_foliageWinter" />
 
                 <TextView
                     android:id="@+id/activity_flora_tv_foliageTexture"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toRightOf="@id/foliage_texture"
+                    android:textSize="@dimen/text_size_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/foliage_texture"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_foliageWinter" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -266,7 +272,9 @@
             android:id="@+id/cardView4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/margin"
             app:cardBackgroundColor="@color/colorCardViewGreen"
             app:cardCornerRadius="10dp"
             app:cardElevation="5dp"
@@ -278,7 +286,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
+                android:padding="@dimen/margin">
 
                 <TextView
                     android:id="@+id/tv_seedFruitText"
@@ -287,163 +295,170 @@
                     android:gravity="center"
                     android:text="@string/seed_fruit_info"
                     android:textColor="@color/colorRose"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/text_size_heading"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_seedFruitColor"
-                    android:layout_width="200dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/color"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_seedFruitText" />
 
                 <TextView
                     android:id="@+id/activity_flora_tv_seedFruitColor"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toRightOf="@id/tv_seedFruitColor"
+                    android:textSize="@dimen/text_size_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_seedFruitColor"
                     app:layout_constraintTop_toBottomOf="@id/tv_seedFruitText" />
 
                 <TextView
                     android:id="@+id/tv_seedFruitSeedBegin"
-                    android:layout_width="200dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/seed_period_begin"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_seedFruitColor" />
+                    app:layout_constraintTop_toBottomOf="@+id/activity_flora_tv_seedFruitColor" />
 
                 <TextView
                     android:id="@+id/activity_flora_tv_seedFruitSeedBegin"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toRightOf="@id/tv_seedFruitSeedBegin"
-                    app:layout_constraintTop_toBottomOf="@id/tv_seedFruitColor" />
+                    android:textSize="@dimen/text_size_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_seedFruitSeedBegin"
+                    app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_seedFruitColor" />
 
                 <TextView
                     android:id="@+id/tv_seedFruitSeedEnd"
-                    android:layout_width="200dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/seed_period_end"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_seedFruitSeedBegin" />
+                    app:layout_constraintTop_toBottomOf="@+id/activity_flora_tv_seedFruitSeedBegin" />
 
                 <TextView
                     android:id="@+id/activity_flora_tv_seedFruitSeedEnd"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toRightOf="@id/tv_seedFruitSeedEnd"
+                    android:textSize="@dimen/text_size_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_seedFruitSeedEnd"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_seedFruitSeedBegin" />
 
                 <TextView
                     android:id="@+id/tv_seedFruitBloomPeriod"
-                    android:layout_width="200dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/seed_bloom_period"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_seedFruitSeedEnd" />
+                    app:layout_constraintTop_toBottomOf="@+id/activity_flora_tv_seedFruitSeedEnd" />
 
                 <TextView
                     android:id="@+id/activity_flora_tv_seedFruitBloomPeriod"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toRightOf="@id/tv_seedFruitBloomPeriod"
+                    android:textSize="@dimen/text_size_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_seedFruitBloomPeriod"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_seedFruitSeedEnd" />
 
                 <TextView
                     android:id="@+id/tv_seedFruitCommercialAvailability"
-                    android:layout_width="200dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/commercial_availability"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_seedFruitBloomPeriod" />
+                    app:layout_constraintTop_toBottomOf="@+id/activity_flora_tv_seedFruitBloomPeriod" />
 
                 <TextView
                     android:id="@+id/activity_flora_tv_seedFruitCommercialAvailability"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toRightOf="@id/tv_seedFruitCommercialAvailability"
+                    android:textSize="@dimen/text_size_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_seedFruitCommercialAvailability"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_seedFruitBloomPeriod" />
 
                 <TextView
                     android:id="@+id/tv_seedFruitSeedlingVigor"
-                    android:layout_width="200dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/seedling_vigor"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_seedFruitCommercialAvailability" />
+                    app:layout_constraintTop_toBottomOf="@+id/activity_flora_tv_seedFruitCommercialAvailability" />
 
                 <TextView
                     android:id="@+id/activity_flora_tv_seedFruitSeedlingVigor"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toRightOf="@id/tv_seedFruitSeedlingVigor"
+                    android:textSize="@dimen/text_size_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_seedFruitSeedlingVigor"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_seedFruitCommercialAvailability" />
 
                 <TextView
                     android:id="@+id/tv_seedFruitSeedsPerPound"
-                    android:layout_width="200dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/seeds_per_pound"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_seedFruitSeedlingVigor" />
+                    app:layout_constraintTop_toBottomOf="@+id/activity_flora_tv_seedFruitSeedlingVigor" />
 
                 <TextView
                     android:id="@+id/activity_flora_tv_seedFruitSeedsPerPound"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toRightOf="@id/tv_seedFruitSeedsPerPound"
+                    android:textSize="@dimen/text_size_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_seedFruitSeedsPerPound"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_seedFruitSeedlingVigor" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -453,7 +468,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/margin"
             android:layout_marginBottom="20dp"
             app:cardBackgroundColor="@color/colorCardViewGreen"
             app:cardCornerRadius="10dp"
@@ -467,7 +484,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
+                android:padding="@dimen/margin">
 
                 <TextView
                     android:id="@+id/tv_GrowthText"
@@ -476,273 +493,285 @@
                     android:gravity="center"
                     android:text="@string/growth_info"
                     android:textColor="@color/colorRose"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/text_size_heading"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_caco3Tolerance"
-                    android:layout_width="220dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/caco3_tolerance"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_GrowthText" />
 
                 <TextView
                     android:id="@+id/activity_flora_tv_caco3Tolerance"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toRightOf="@id/tv_caco3Tolerance"
+                    android:textSize="@dimen/text_size_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_caco3Tolerance"
                     app:layout_constraintTop_toBottomOf="@id/tv_GrowthText" />
 
                 <TextView
                     android:id="@+id/tv_droughtTolerance"
-                    android:layout_width="220dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/drought_tolerance"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_caco3Tolerance" />
+                    app:layout_constraintTop_toBottomOf="@+id/activity_flora_tv_caco3Tolerance" />
 
                 <TextView
                     android:id="@+id/activity_flora_tv_droughtTolerance"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toRightOf="@id/tv_droughtTolerance"
+                    android:textSize="@dimen/text_size_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_droughtTolerance"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_caco3Tolerance" />
 
                 <TextView
                     android:id="@+id/tv_fireTolerance"
-                    android:layout_width="220dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/fire_tolerance"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_droughtTolerance" />
+                    app:layout_constraintTop_toBottomOf="@+id/activity_flora_tv_droughtTolerance" />
 
                 <TextView
                     android:id="@+id/activity_flora_tv_fireTolerance"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toRightOf="@id/tv_fireTolerance"
+                    android:textSize="@dimen/text_size_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_fireTolerance"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_droughtTolerance" />
 
                 <TextView
                     android:id="@+id/tv_minPh"
-                    android:layout_width="220dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/min_ph"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_fireTolerance" />
+                    app:layout_constraintTop_toBottomOf="@+id/activity_flora_tv_fireTolerance" />
 
                 <TextView
                     android:id="@+id/activity_flora_tv_minPh"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toRightOf="@id/tv_minPh"
+                    android:textSize="@dimen/text_size_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_minPh"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_fireTolerance" />
 
                 <TextView
                     android:id="@+id/tv_maxPh"
-                    android:layout_width="220dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/max_ph"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_minPh" />
+                    app:layout_constraintTop_toBottomOf="@+id/activity_flora_tv_minPh" />
 
                 <TextView
                     android:id="@+id/activity_flora_tv_maxPh"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toRightOf="@id/tv_maxPh"
+                    android:textSize="@dimen/text_size_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_maxPh"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_minPh" />
 
                 <TextView
                     android:id="@+id/tv_minPlantingDensity"
-                    android:layout_width="220dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/min_planting_density"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_maxPh" />
+                    app:layout_constraintTop_toBottomOf="@+id/activity_flora_tv_maxPh" />
 
                 <TextView
                     android:id="@+id/activity_flora_tv_minPlantingDensity"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toRightOf="@id/tv_minPlantingDensity"
+                    android:textSize="@dimen/text_size_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_minPlantingDensity"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_maxPh" />
 
                 <TextView
                     android:id="@+id/tv_maxPlantingDensity"
-                    android:layout_width="220dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/max_planting_density"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_minPlantingDensity" />
+                    app:layout_constraintTop_toBottomOf="@+id/activity_flora_tv_minPlantingDensity" />
 
                 <TextView
                     android:id="@+id/activity_flora_tv_maxPlantingDensity"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toRightOf="@id/tv_maxPlantingDensity"
+                    android:textSize="@dimen/text_size_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_maxPlantingDensity"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_minPlantingDensity" />
 
                 <TextView
                     android:id="@+id/tv_minPrecipitation"
-                    android:layout_width="220dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/min_precipitation"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_maxPlantingDensity" />
+                    app:layout_constraintTop_toBottomOf="@+id/activity_flora_tv_maxPlantingDensity" />
 
                 <TextView
                     android:id="@+id/activity_flora_tv_minPrecipitation"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toRightOf="@id/tv_minPrecipitation"
+                    android:textSize="@dimen/text_size_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_minPrecipitation"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_maxPlantingDensity" />
 
                 <TextView
                     android:id="@+id/tv_maxPrecipitation"
-                    android:layout_width="220dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/max_precipitation"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_minPrecipitation" />
+                    app:layout_constraintTop_toBottomOf="@+id/activity_flora_tv_minPrecipitation" />
 
                 <TextView
                     android:id="@+id/activity_flora_tv_maxPrecipitation"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toRightOf="@id/tv_maxPrecipitation"
+                    android:textSize="@dimen/text_size_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_maxPrecipitation"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_minPrecipitation" />
 
                 <TextView
                     android:id="@+id/tv_fertilityRequirement"
-                    android:layout_width="220dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/fertility_requirement"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_maxPrecipitation" />
+                    app:layout_constraintTop_toBottomOf="@+id/activity_flora_tv_maxPrecipitation" />
 
                 <TextView
                     android:id="@+id/activity_flora_tv_fertilityRequirement"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toRightOf="@id/tv_fertilityRequirement"
+                    android:textSize="@dimen/text_size_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_fertilityRequirement"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_maxPrecipitation" />
 
                 <TextView
                     android:id="@+id/tv_moistureUse"
-                    android:layout_width="220dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/moisture_use"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_fertilityRequirement" />
+                    app:layout_constraintTop_toBottomOf="@+id/activity_flora_tv_fertilityRequirement" />
 
                 <TextView
                     android:id="@+id/activity_flora_tv_moistureUse"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toRightOf="@id/tv_moistureUse"
+                    android:textSize="@dimen/text_size_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_moistureUse"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_fertilityRequirement" />
 
                 <TextView
                     android:id="@+id/tv_matureHeight"
-                    android:layout_width="220dp"
+                    android:layout_width="@dimen/text_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin"
                     android:layout_marginTop="10dp"
                     android:text="@string/mature_height"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_value"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_moistureUse" />
+                    app:layout_constraintTop_toBottomOf="@+id/activity_flora_tv_moistureUse" />
 
                 <TextView
                     android:id="@+id/activity_flora_tv_matureHeight"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toRightOf="@id/tv_matureHeight"
+                    android:textSize="@dimen/text_size_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_matureHeight"
                     app:layout_constraintTop_toBottomOf="@id/activity_flora_tv_moistureUse" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -752,16 +781,16 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/activity_flora_vp_preview"
             android:layout_width="0dp"
-            android:layout_height="300dp"
+            android:layout_height="@dimen/image_height"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/activity_flora_iv_warning"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="@dimen/caution_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -772,6 +801,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/no_image"
+            android:textSize="@dimen/text_size_value"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/activity_flora_iv_warning" />

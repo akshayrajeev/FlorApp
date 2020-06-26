@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size_value">12sp</dimen>
+    <dimen name="text_size_heading">14sp</dimen>
+    <dimen name="text_width">160dp</dimen>
+    <dimen name="margin">10dp</dimen>
+    <dimen name="text_width_result">100dp</dimen>
+    <dimen name="image_height">200dp</dimen>
+    <dimen name="caution_margin">80dp</dimen>
+    <dimen name="settings_margin">10dp</dimen>
+</resources>

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
@@ -34,11 +35,17 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    static {
+        System.loadLibrary("native-lib");
+    }
+    public native String getAPIKey();
+
     ImageView iv_logo;
     TextView tv_logo, tv_complete;
     EditText et_search;
     RadioButton rb_scientific, rb_common;
     Switch sw_complete;
+    LoadingDialog loadingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "No Input", Toast.LENGTH_LONG).show();
                     }
                     else {
+                        loadingDialog = new LoadingDialog(MainActivity.this);
+                        loadingDialog.startLoading();
                         inputMethodManager.hideSoftInputFromWindow(et_search.getWindowToken(), 0);
                         getLinks(query);
                     }
@@ -99,11 +108,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void getLinks(String query) {
         String URL = "";
+        String token = new String(Base64.decode(getAPIKey(),Base64.DEFAULT));
         if(rb_scientific.isChecked()) {
-            URL = "https://trefle.io/api/plants?token=MU1JQ1Nhbnl0VXVNQmhEaUV4VHNMdz09&scientific_name=" + query;
+            URL = "https://trefle.io/api/plants?token=" + token + "&scientific_name=" + query;
         }
         else {
-            URL = "https://trefle.io/api/plants?token=MU1JQ1Nhbnl0VXVNQmhEaUV4VHNMdz09&common_name=" + query;
+            URL = "https://trefle.io/api/plants?token=" + token + "&common_name=" + query;
         }
         if(!sw_complete.isChecked()) {
             URL += "&complete_data=true";
@@ -114,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray response) {
                 if(response.length() == 0) {
+                    loadingDialog.dismissLoading();
                     Toast.makeText(getApplicationContext(),"No Results Found",Toast.LENGTH_LONG).show();
                 }
                 else {
@@ -131,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
                     error_message = "Cannot connect to Internet";
                 }
                 Toast.makeText(getApplicationContext(), error_message, Toast.LENGTH_LONG).show();
+                loadingDialog.dismissLoading();
             }
         });
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
@@ -181,5 +193,6 @@ public class MainActivity extends AppCompatActivity {
             intent.putParcelableArrayListExtra("Data", list);
             startActivity(intent);
         }
+        loadingDialog.dismissLoading();
     }
 }

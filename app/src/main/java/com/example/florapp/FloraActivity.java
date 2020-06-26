@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.SpannableString;
 import android.text.style.AbsoluteSizeSpan;
+import android.util.Base64;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +34,12 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 public class FloraActivity extends AppCompatActivity {
+    LoadingDialog loadingDialog;
+
+    static {
+        System.loadLibrary("native-lib");
+    }
+    public native String getAPIKey();
 
     Flora flora;
     HashMap<String,String> growth;
@@ -42,6 +49,8 @@ public class FloraActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flora);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        loadingDialog = new LoadingDialog(FloraActivity.this);
+        loadingDialog.startLoading();
         ImageView iv_warning = findViewById(R.id.activity_flora_iv_warning);
         TextView tv_warning = findViewById(R.id.activity_flora_tv_warning);
         iv_warning.setVisibility(View.INVISIBLE);
@@ -53,7 +62,8 @@ public class FloraActivity extends AppCompatActivity {
     }
 
     private void getData(String link) {
-        link += "?token=MU1JQ1Nhbnl0VXVNQmhEaUV4VHNMdz09";
+        String token = new String(Base64.decode(getAPIKey(),Base64.DEFAULT));
+        link += "?token=" + token;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, link, null, new Response.Listener<JSONObject>() {
             @Override
@@ -71,6 +81,7 @@ public class FloraActivity extends AppCompatActivity {
                     error_message = "Cannot connect to Internet";
                 }
                 Toast.makeText(getApplicationContext(), error_message, Toast.LENGTH_LONG).show();
+                loadingDialog.dismissLoading();
             }
         });
         requestQueue.add(jsonObjectRequest);
@@ -141,6 +152,8 @@ public class FloraActivity extends AppCompatActivity {
         HashMap<String,String> seedFruit = flora.getSeedFruit();
         growth = flora.getGrowth();
 
+        loadingDialog.dismissLoading();
+
         tv_common.setText(flora.getCommonName());
         tv_scientific.setText(flora.getScientificName());
         tv_familyCommon.setText(flora.getFamilyCommonName());
@@ -197,6 +210,7 @@ public class FloraActivity extends AppCompatActivity {
         String precipitationIn = preferences.getString("precipitation", "None");
         String matureHeightIn = preferences.getString("matureHeight", "None");
         SpannableString spannableString;
+        int size = (int)tv_matureHeight.getTextSize() - 3;
 
         if(plantingDensityIn.equals("acre")) {
             spannableString = new SpannableString(" acre");
@@ -208,7 +222,7 @@ public class FloraActivity extends AppCompatActivity {
             tv_minPlantingDensity.setText(growth.get("minPlantingDensitySqm"));
             tv_maxPlantingDensity.setText(growth.get("maxPlantingDensitySqm"));
         }
-        spannableString.setSpan(new AbsoluteSizeSpan(13, true), 1, spannableString.length(), 0);
+        spannableString.setSpan(new AbsoluteSizeSpan(size, false), 1, spannableString.length(), 0);
         if(!tv_maxPlantingDensity.getText().equals("No Data")) {
             tv_maxPlantingDensity.append(spannableString);
         }
@@ -226,7 +240,7 @@ public class FloraActivity extends AppCompatActivity {
             tv_minPrecipitation.setText(growth.get("minPrecipitationInch"));
             tv_maxPrecipitation.setText(growth.get("maxPrecipitationInch"));
         }
-        spannableString.setSpan(new AbsoluteSizeSpan(13, true), 1, spannableString.length(), 0);
+        spannableString.setSpan(new AbsoluteSizeSpan(size, false), 1, spannableString.length(), 0);
         if(!tv_minPrecipitation.getText().equals("No Data")) {
             tv_minPrecipitation.append(spannableString);
         }
@@ -242,7 +256,7 @@ public class FloraActivity extends AppCompatActivity {
             spannableString = new SpannableString(" ft");
             tv_matureHeight.setText(growth.get("matureHeightFt"));
         }
-        spannableString.setSpan(new AbsoluteSizeSpan(13, true), 1, spannableString.length(), 0);
+        spannableString.setSpan(new AbsoluteSizeSpan(size, false), 1, spannableString.length(), 0);
         if(!tv_matureHeight.getText().equals("No Data")) {
             tv_matureHeight.append(spannableString);
         }
