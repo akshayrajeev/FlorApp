@@ -1,4 +1,4 @@
-package com.example.florapp;
+package com.akshayrajeev.florapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 

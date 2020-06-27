@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="text_size_value">24sp</dimen>
-    <dimen name="text_size_heading">26sp</dimen>
+    <dimen name="text_size_value">26sp</dimen>
+    <dimen name="text_size_heading">28sp</dimen>
     <dimen name="text_width">350dp</dimen>
-    <dimen name="margin">20dp</dimen>
+    <dimen name="margin">25dp</dimen>
     <dimen name="text_width_result">250dp</dimen>
     <dimen name="image_height">500dp</dimen>
     <dimen name="caution_margin">250dp</dimen>

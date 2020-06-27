@@ -1,4 +1,4 @@
-package com.example.florapp;
+package com.akshayrajeev.florapp;
 
 import android.os.Parcel;
 import android.os.Parcelable;

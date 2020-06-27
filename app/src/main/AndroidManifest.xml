@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.florapp">
+    package="com.akshayrajeev.florapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,12 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FullImage"></activity>
-        <activity android:name=".ResultActivity" />
-        <activity android:name=".SettingsActivity" />
-        <activity android:name=".FloraActivity" />
+        <activity android:name="com.akshayrajeev.florapp.FullImage"></activity>
+        <activity android:name="com.akshayrajeev.florapp.ResultActivity" />
+        <activity android:name="com.akshayrajeev.florapp.SettingsActivity" />
+        <activity android:name="com.akshayrajeev.florapp.FloraActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.akshayrajeev.florapp.MainActivity"
             android:theme="@style/AppThemeNoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/app_ad"/>
     </application>
 
 </manifest>

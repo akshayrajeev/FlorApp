@@ -51,4 +51,12 @@
 
     <string name="no_image">No Images Available</string>
     <string name="loading">Loading…</string>
+
+    <string name="result_ad">ca-app-pub-7206936759763051/6484193979</string>
+    <string name="flora_ad">ca-app-pub-7206936759763051/4923700292</string>
+    <string name="app_ad">ca-app-pub-7206936759763051~2189725743</string>
+
+<!--    <string name="result_ad">ca-app-pub-3940256099942544/6300978111</string>-->
+<!--    <string name="flora_ad">ca-app-pub-3940256099942544/6300978111</string>-->
+<!--    <string name="app_ad">ca-app-pub-3940256099942544~3347511713</string>-->
 </resources>
