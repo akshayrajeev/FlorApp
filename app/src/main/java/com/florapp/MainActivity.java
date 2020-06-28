@@ -1,4 +1,4 @@
-package com.akshayrajeev.florapp;
+package com.florapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -110,10 +110,10 @@ public class MainActivity extends AppCompatActivity {
         String URL = "";
         String token = new String(Base64.decode(getAPIKey(),Base64.DEFAULT));
         if(rb_scientific.isChecked()) {
-            URL = "https://trefle.io/api/plants?token=" + token + "&scientific_name=" + query;
+            URL = "https://v0.trefle.io/api/plants?token=" + token + "&scientific_name=" + query;
         }
         else {
-            URL = "https://trefle.io/api/plants?token=" + token + "&common_name=" + query;
+            URL = "https://v0.trefle.io/api/plants?token=" + token + "&common_name=" + query;
         }
         if(!sw_complete.isChecked()) {
             URL += "&complete_data=true";
@@ -140,6 +140,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(error instanceof NetworkError) {
                     error_message = "Cannot connect to Internet";
+                }
+                else {
+                    error_message = "API Undergoing Changes...Please Try After Sometime";
                 }
                 Toast.makeText(getApplicationContext(), error_message, Toast.LENGTH_LONG).show();
                 loadingDialog.dismissLoading();

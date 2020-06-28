@@ -1,4 +1,4 @@
-package com.akshayrajeev.florapp;
+package com.florapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

@@ -1,4 +1,4 @@
-package com.akshayrajeev.florapp;
+package com.florapp;
 
 import android.app.Activity;
 import android.app.AlertDialog;
